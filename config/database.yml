@@ -15,8 +15,8 @@ test:
 
 production:
   adapter: mysql2
-  encoding: unicode
+  encoding: utf8
   database: loans_pro
   pool: 5
   username: root
-  password: db.password
+  password: 123456

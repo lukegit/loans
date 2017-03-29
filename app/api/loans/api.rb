@@ -47,6 +47,39 @@ module Loans
                       tabName: Digest::SHA256.hexdigest(return_msg.to_json),
         )
       end
+
+      desc 'api list'
+      get :api_list do
+        http_str = 'http://'
+        {
+            api_list: [
+                {
+                    url: "#{http_str}47.93.40.60/config/online",
+                    desc: '配置接口',
+                    params: 'channel&platform',
+                    method: 'get'
+                },
+                {
+                    url: "#{http_str}47.93.40.60/user/register",
+                    desc: '注册',
+                    params: 'phoneNum&passWord',
+                    method: 'post'
+                },
+                {
+                    url: "#{http_str}47.93.40.60/user/login",
+                    desc: '注册',
+                    params: 'phoneNum&passWord',
+                    method: 'post'
+                },
+                {
+                    url: "#{http_str}47.93.40.60/online/apply",
+                    desc: '申请借款',
+                    params: 'profession&moneyAmount&timeLimit&use&name&workLocation&income&hasCard&phone',
+                    method: 'post'
+                }
+            ]
+        }
+      end
     end
 
     resource :user do

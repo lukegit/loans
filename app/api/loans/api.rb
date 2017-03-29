@@ -38,7 +38,7 @@ module Loans
         requires :phoneNum, type: Integer
         requires :passWord, type: String
       end
-      get :register do
+      post :register do
         user = User.find_by(telephone: params[:phoneNum])
         error!('用户已存在', 409) if user
         user = User.create(telephone: params[:phoneNum], password: params[:passWord])
@@ -50,7 +50,7 @@ module Loans
         requires :phoneNum, type: Integer
         requires :passWord, type: String
       end
-      get :login do
+      post :login do
         user = User.find_by(telephone: params[:phoneNum])
         error!('用户未注册', 404) unless user
         error!('密码错误', 401) unless user.authenticate(params[:passWord])
@@ -71,7 +71,7 @@ module Loans
         requires :hasCard, type: Integer
         requires :phone, type: String
       end
-      get :apply do
+      post :apply do
         user = User.find_by(telephone: params[:phone])
         error!('用户未注册', 404) unless user
         error!('审核中的借款未处理', 401) if user.applies.present? && user.applies.last.applying?

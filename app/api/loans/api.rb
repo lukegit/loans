@@ -31,6 +31,23 @@ module Loans
     helpers do
 
     end
+    resource :config do
+      desc 'config'
+      params do
+        requires :channel, type: String
+        requires :platform, type: String
+      end
+      get :online do
+        return_msg = {
+            app: 'loans',
+            version: '0.1.1',
+        }
+        return_msg.merge!(channel: params[:channel], platform: params[:platform])
+        return_msg.merge(
+                      tabName: Digest::SHA256.hexdigest(return_msg.to_json),
+        )
+      end
+    end
 
     resource :user do
       desc 'register'

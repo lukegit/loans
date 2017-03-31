@@ -29,7 +29,10 @@ module Loans
     error_formatter :json, ErrorFormatter
 
     helpers do
-
+    end
+    before do
+      header 'Access-Control-Allow-Origin', '*'
+      header 'Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT'
     end
     resource :config do
       desc 'config'

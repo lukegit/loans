@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'grape'
 gem 'grape-entity'
+# gem 'grape-swagger'
 gem 'will_paginate'
 gem 'bcrypt-ruby', '3.1.5'
 gem 'thin'
